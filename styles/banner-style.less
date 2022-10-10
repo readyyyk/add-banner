@@ -1,0 +1,262 @@
+// yellow
+// @main-color: #ffcb2e;
+// @sub-color: #ffee07;
+// @sub-shadow-color: #634a00;
+
+// blue
+@main-color: #0d6efd;
+@sub-color: #00ccff;
+@sub-shadow-color: #0d213f;
+
+
+@keyframes banner-shadow-n-shaking {
+    0% {
+        box-shadow: 6px 6px 30px 15px #555555, -6px -6px 30px 15px @sub-shadow-color;
+        transform: rotateZ(0turn) translate(-50%, -50%);
+    }
+    20% {
+        transform: rotateZ(0.001turn) translate(-50%, -49.5%);
+    }
+    25% {
+        box-shadow: 6px -6px 30px 15px #555555, -6px 6px 30px 15px @sub-shadow-color;
+    }
+    30% {
+        transform: rotateZ(-0.001turn) translate(-50%, -50.5%);
+    }
+    40% {
+        transform: rotateZ(0.001turn) translate(-50%, -49.5%);
+    }
+    50% {
+        box-shadow: -6px -6px 30px 15px #555555, 6px 6px 30px 15px @sub-shadow-color;
+        transform: rotateZ(-0.001turn) translate(-50%, -50.5%);
+    }
+    60% {
+        transform: rotateZ(0.001turn) translate(-50%, -49.5%);
+    }
+    70% {
+        transform: rotateZ(-0.001turn) translate(-50%, -50.5%);
+    }
+    75% {
+        box-shadow: -6px 6px 30px 15px #555555, 6px -6px 30px 15px @sub-shadow-color;
+    }
+    80% {
+        transform: rotateZ(0.001turn) translate(-50%, -49.5%);
+    }
+    100% {
+        box-shadow: 6px 6px 30px 15px #555555, -6px -6px 30px 15px @sub-shadow-color;
+        transform: rotateZ(0turn) translate(-50%, -50%);
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0
+}
+
+.banner {
+    position: fixed;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35em;
+    height: 20em;
+    padding: 2em;
+    box-sizing: border-box;
+    border-radius: 20px;
+    display: flex;
+    animation: 2s infinite .5s banner-shadow-n-shaking;
+    align-items: stretch;
+    flex-wrap: wrap;
+    font-family: sans-serif;
+    background: #fff;
+    transition: 2s ease top;
+    overflow: hidden;
+
+    &__wrapper {
+        top: 0;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        z-index: -1;
+        transition: .3s ease opacity;
+
+        & a {
+            text-decoration: none;
+            color: @main-color;
+            transition: .2s all ease;
+
+            &:hover {
+                color: @sub-color;
+
+                & img {
+                    top: -0.5em;
+                }
+            }
+
+            & img {
+                transition: .2s top ease;
+                position: relative;
+                top: 0;
+            }
+        }
+    }
+
+    &__tl {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5em;
+        max-height: 7em;
+
+        &__logo img {
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        &__text {
+            font-size: 1.6em;
+            text-transform: uppercase;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    &__bl {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+
+        &__text {
+            font-size: 1.3em;
+            line-height: 1.2;
+
+            &::after {
+                content: "";
+                position: fixed;
+                left: 0;
+                top: 50%;
+                width: 100%;
+                height: 50%;
+                background: linear-gradient(to top, #fff 30%, rgba(255, 255, 255, 0));
+            }
+        }
+
+        &__link {
+            position: fixed;
+            width: 100%;
+            left: 0;
+            top: 100%;
+            transform: translateY(-100%);
+            display: flex;
+            justify-content: center;
+
+            & a {
+                font-size: 2em;
+                height: 1.8em;
+                transition: all .2s ease;
+            }
+
+            &:hover a {
+                height: 1.9em;
+            }
+        }
+    }
+
+    &__close {
+        width: 1.3em;
+        height: 1.3em;
+        position: absolute;
+        right: 1em;
+        top: 1em;
+        font-family: fantasy;
+        font-weight: bold;
+        cursor: pointer;
+        
+        & svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: .3;
+            left: 0;
+            top: 0;
+            cursor: pointer
+        }
+
+        & span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+    }
+}
+
+
+@media (max-width:600px) {
+
+    @keyframes banner-shadow-n-shaking {
+        0% {
+            box-shadow: 6px 6px 30px 15px #555555, -6px -6px 30px 15px @sub-shadow-color;
+            transform: rotateZ(0turn) translate(-50%, -50%);
+        }
+        20% {
+            transform: rotateZ(0.0003turn) translate(-50%, -49.95%);
+        }
+        25% {
+            box-shadow: 6px -6px 30px 15px #555555, -6px 6px 30px 15px @sub-shadow-color;
+        }
+        30% {
+            transform: rotateZ(-0.0003turn) translate(-50%, -50.05%);
+        }
+        40% {
+            transform: rotateZ(0.0003turn) translate(-50%, -49.95%);
+        }
+        50% {
+            box-shadow: -6px -6px 30px 15px #555555, 6px 6px 30px 15px @sub-shadow-color;
+            transform: rotateZ(-0.0003turn) translate(-50%, -50.05%);
+        }
+        60% {
+            transform: rotateZ(0.0003turn) translate(-50%, -49.95%);
+        }
+        70% {
+            transform: rotateZ(-0.0003turn) translate(-50%, -50.05%);
+        }
+        75% {
+            box-shadow: -6px 6px 30px 15px #555555, 6px -6px 30px 15px @sub-shadow-color;
+        }
+        80% {
+            transform: rotateZ(0.0003turn) translate(-50%, -49.95%);
+        }
+        100% {
+            box-shadow: 6px 6px 30px 15px #555555, -6px -6px 30px 15px @sub-shadow-color;
+            transform: rotateZ(0turn) translate(-50%, -50%);
+        }
+    }
+
+    .banner {
+        width: 20em;
+        height: 35em;
+
+        &__tl {
+            max-height: 5em;
+
+            &__text {
+                font-size: 1.3em;
+                margin-left: .7em;
+                text-align: right;
+
+                &::after {
+                    background: linear-gradient(to top, #fff 20%, rgba(255, 255, 255, 0))
+                }
+            }
+        }
+    }
+}
